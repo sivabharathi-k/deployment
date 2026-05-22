@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A beautiful, modern, glassmorphic Calculator web application built with a secure Python Flask backend and standard HTML, CSS, and JavaScript.">
     <title>Quantum Calc - Modern Calculator Web App</title>
-    
-    <!-- Google Fonts for premium, sleek typography -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Plain relative path — works on Vercel (no Flask url_for needed) -->
-    <link rel="stylesheet" href="static/style.css">
+
+    <!-- style.css is at root level alongside index.html -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="glow-bg-blob blob-1"></div>
@@ -25,50 +24,48 @@
 
     <main class="calculator-container">
         <div class="calculator-card" id="calculator-card">
-            
+
             <div class="calc-screen" id="calc-screen">
                 <div class="expression-viewer" id="expression-viewer" aria-live="polite"></div>
                 <div class="result-viewer" id="result-viewer" aria-live="polite">0</div>
             </div>
 
             <div class="keypad-grid">
-                <!-- Row 1: Utility Buttons -->
-                <button type="button" class="btn btn-util" id="btn-clear" title="Clear entire expression">C</button>
-                <button type="button" class="btn btn-util" id="btn-paren-open" title="Open parenthesis">(</button>
-                <button type="button" class="btn btn-util" id="btn-paren-close" title="Close parenthesis">)</button>
-                <button type="button" class="btn btn-operator" id="btn-divide" title="Divide">/</button>
+                <!-- Row 1 -->
+                <button type="button" class="btn btn-util" id="btn-clear">C</button>
+                <button type="button" class="btn btn-util" id="btn-paren-open">(</button>
+                <button type="button" class="btn btn-util" id="btn-paren-close">)</button>
+                <button type="button" class="btn btn-operator" id="btn-divide">/</button>
 
-                <!-- Row 2: Digits 7, 8, 9 & Multiply -->
+                <!-- Row 2 -->
                 <button type="button" class="btn btn-digit" id="btn-7">7</button>
                 <button type="button" class="btn btn-digit" id="btn-8">8</button>
                 <button type="button" class="btn btn-digit" id="btn-9">9</button>
-                <button type="button" class="btn btn-operator" id="btn-multiply" title="Multiply">*</button>
+                <button type="button" class="btn btn-operator" id="btn-multiply">*</button>
 
-                <!-- Row 3: Digits 4, 5, 6 & Subtract -->
+                <!-- Row 3 -->
                 <button type="button" class="btn btn-digit" id="btn-4">4</button>
                 <button type="button" class="btn btn-digit" id="btn-5">5</button>
                 <button type="button" class="btn btn-digit" id="btn-6">6</button>
-                <button type="button" class="btn btn-operator" id="btn-subtract" title="Subtract">-</button>
+                <button type="button" class="btn btn-operator" id="btn-subtract">-</button>
 
-                <!-- Row 4: Digits 1, 2, 3 & Add -->
+                <!-- Row 4 -->
                 <button type="button" class="btn btn-digit" id="btn-1">1</button>
                 <button type="button" class="btn btn-digit" id="btn-2">2</button>
                 <button type="button" class="btn btn-digit" id="btn-3">3</button>
-                <button type="button" class="btn btn-operator" id="btn-add" title="Add">+</button>
+                <button type="button" class="btn btn-operator" id="btn-add">+</button>
 
-                <!-- Row 5: Decimal, 0, Backspace & Equals -->
+                <!-- Row 5 -->
                 <button type="button" class="btn btn-digit" id="btn-decimal">.</button>
                 <button type="button" class="btn btn-digit" id="btn-0">0</button>
-                
-                <button type="button" class="btn btn-util btn-backspace" id="btn-backspace" title="Delete last character">
+                <button type="button" class="btn btn-util btn-backspace" id="btn-backspace">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
                         <line x1="18" y1="9" x2="12" y2="15"></line>
                         <line x1="12" y1="9" x2="18" y2="15"></line>
                     </svg>
                 </button>
-                
-                <button type="button" class="btn btn-equals" id="btn-equals" title="Calculate result">=</button>
+                <button type="button" class="btn btn-equals" id="btn-equals">=</button>
             </div>
         </div>
 
@@ -85,7 +82,7 @@
         </p>
     </footer>
 
-    <!-- Plain relative path — works on Vercel -->
-    <script src="static/script.js"></script>
+    <!-- script.js is at root level alongside index.html -->
+    <script src="./script.js"></script>
 </body>
 </html>
