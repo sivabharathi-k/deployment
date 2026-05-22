@@ -11,11 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Link to the custom CSS styling -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Plain relative path — works on Vercel (no Flask url_for needed) -->
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <!-- Background abstract decorative blobs for stunning visual layout depth -->
     <div class="glow-bg-blob blob-1"></div>
     <div class="glow-bg-blob blob-2"></div>
 
@@ -25,18 +24,13 @@
     </header>
 
     <main class="calculator-container">
-        <!-- Glassmorphism Calculator Card -->
         <div class="calculator-card" id="calculator-card">
             
-            <!-- Calculator Display Screen -->
             <div class="calc-screen" id="calc-screen">
-                <!-- Displays the full active calculation history/expression -->
                 <div class="expression-viewer" id="expression-viewer" aria-live="polite"></div>
-                <!-- Displays the current typing buffer or calculations' final results -->
                 <div class="result-viewer" id="result-viewer" aria-live="polite">0</div>
             </div>
 
-            <!-- Calculator Keypad Layout -->
             <div class="keypad-grid">
                 <!-- Row 1: Utility Buttons -->
                 <button type="button" class="btn btn-util" id="btn-clear" title="Clear entire expression">C</button>
@@ -62,11 +56,10 @@
                 <button type="button" class="btn btn-digit" id="btn-3">3</button>
                 <button type="button" class="btn btn-operator" id="btn-add" title="Add">+</button>
 
-                <!-- Row 5: Decimals, 0, Backspace & Equals -->
+                <!-- Row 5: Decimal, 0, Backspace & Equals -->
                 <button type="button" class="btn btn-digit" id="btn-decimal">.</button>
                 <button type="button" class="btn btn-digit" id="btn-0">0</button>
                 
-                <!-- SVG Backspace Icon for high-quality scalable vector render -->
                 <button type="button" class="btn btn-util btn-backspace" id="btn-backspace" title="Delete last character">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
@@ -75,12 +68,10 @@
                     </svg>
                 </button>
                 
-                <!-- Equals button triggering POST fetch api calculations -->
                 <button type="button" class="btn btn-equals" id="btn-equals" title="Calculate result">=</button>
             </div>
         </div>
 
-        <!-- Inline quick tip guide for absolute beginners -->
         <div class="user-tips">
             <span class="tip-badge">Tip</span>
             <p class="tip-text">You can also use your physical keyboard to type numbers, operators, Backspace, or press Enter!</p>
@@ -94,7 +85,7 @@
         </p>
     </footer>
 
-    <!-- Link to the frontend interactive logic script -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- Plain relative path — works on Vercel -->
+    <script src="static/script.js"></script>
 </body>
 </html>
