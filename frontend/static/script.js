@@ -6,6 +6,10 @@
  * and sends mathematical expressions to the Flask backend via the Fetch API.
  */
 
+// --- BACKEND URL ---
+// Update this URL when you redeploy to a different backend host.
+const BACKEND_URL = "https://deployment-89ku.onrender.com";
+
 // --- STATE MANAGEMENT ---
 // These variables track what is currently happening on the calculator screen.
 let currentExpression = "";      // The expression string being built (e.g., "12+5*3")
@@ -265,7 +269,7 @@ async function calculateResult() {
 
     try {
         // Make the asynchronous POST request to our Flask backend API
-        const response = await fetch("/calculate", {
+        const response = await fetch(`${BACKEND_URL}/calculate`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
