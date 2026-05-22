@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beautiful, modern, glassmorphic Calculator web application built with a secure Python Flask backend and standard HTML, CSS, and JavaScript.">
+    <title>Quantum Calc - Modern Calculator Web App</title>
+    
+    <!-- Google Fonts for premium, sleek typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to the custom CSS styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Background abstract decorative blobs for stunning visual layout depth -->
+    <div class="glow-bg-blob blob-1"></div>
+    <div class="glow-bg-blob blob-2"></div>
+
+    <header class="app-header">
+        <h1 class="logo-text">Quantum<span class="accent-text">Calc</span></h1>
+        <p class="subtitle-text">Flask Backend API Integration Demo</p>
+    </header>
+
+    <main class="calculator-container">
+        <!-- Glassmorphism Calculator Card -->
+        <div class="calculator-card" id="calculator-card">
+            
+            <!-- Calculator Display Screen -->
+            <div class="calc-screen" id="calc-screen">
+                <!-- Displays the full active calculation history/expression -->
+                <div class="expression-viewer" id="expression-viewer" aria-live="polite"></div>
+                <!-- Displays the current typing buffer or calculations' final results -->
+                <div class="result-viewer" id="result-viewer" aria-live="polite">0</div>
+            </div>
+
+            <!-- Calculator Keypad Layout -->
+            <div class="keypad-grid">
+                <!-- Row 1: Utility Buttons -->
+                <button type="button" class="btn btn-util" id="btn-clear" title="Clear entire expression">C</button>
+                <button type="button" class="btn btn-util" id="btn-paren-open" title="Open parenthesis">(</button>
+                <button type="button" class="btn btn-util" id="btn-paren-close" title="Close parenthesis">)</button>
+                <button type="button" class="btn btn-operator" id="btn-divide" title="Divide">/</button>
+
+                <!-- Row 2: Digits 7, 8, 9 & Multiply -->
+                <button type="button" class="btn btn-digit" id="btn-7">7</button>
+                <button type="button" class="btn btn-digit" id="btn-8">8</button>
+                <button type="button" class="btn btn-digit" id="btn-9">9</button>
+                <button type="button" class="btn btn-operator" id="btn-multiply" title="Multiply">*</button>
+
+                <!-- Row 3: Digits 4, 5, 6 & Subtract -->
+                <button type="button" class="btn btn-digit" id="btn-4">4</button>
+                <button type="button" class="btn btn-digit" id="btn-5">5</button>
+                <button type="button" class="btn btn-digit" id="btn-6">6</button>
+                <button type="button" class="btn btn-operator" id="btn-subtract" title="Subtract">-</button>
+
+                <!-- Row 4: Digits 1, 2, 3 & Add -->
+                <button type="button" class="btn btn-digit" id="btn-1">1</button>
+                <button type="button" class="btn btn-digit" id="btn-2">2</button>
+                <button type="button" class="btn btn-digit" id="btn-3">3</button>
+                <button type="button" class="btn btn-operator" id="btn-add" title="Add">+</button>
+
+                <!-- Row 5: Decimals, 0, Backspace & Equals -->
+                <button type="button" class="btn btn-digit" id="btn-decimal">.</button>
+                <button type="button" class="btn btn-digit" id="btn-0">0</button>
+                
+                <!-- SVG Backspace Icon for high-quality scalable vector render -->
+                <button type="button" class="btn btn-util btn-backspace" id="btn-backspace" title="Delete last character">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                        <line x1="18" y1="9" x2="12" y2="15"></line>
+                        <line x1="12" y1="9" x2="18" y2="15"></line>
+                    </svg>
+                </button>
+                
+                <!-- Equals button triggering POST fetch api calculations -->
+                <button type="button" class="btn btn-equals" id="btn-equals" title="Calculate result">=</button>
+            </div>
+        </div>
+
+        <!-- Inline quick tip guide for absolute beginners -->
+        <div class="user-tips">
+            <span class="tip-badge">Tip</span>
+            <p class="tip-text">You can also use your physical keyboard to type numbers, operators, Backspace, or press Enter!</p>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p class="footer-credit">Built with 💻 and 🐍 in Python Flask</p>
+        <p class="footer-nav">
+            <span class="status-indicator"></span> Connected to Backend API
+        </p>
+    </footer>
+
+    <!-- Link to the frontend interactive logic script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

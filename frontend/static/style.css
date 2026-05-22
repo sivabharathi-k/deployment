@@ -1,0 +1,442 @@
+/* ==========================================================================
+   CSS DESIGN SYSTEM & STYLING
+   ========================================================================== */
+
+/* Define our design tokens and theme variables.
+   We use HSL (Hue, Saturation, Lightness) for unified and harmonious coloring. */
+:root {
+    /* Color Palette */
+    --bg-dark: hsl(222, 25%, 8%);
+    --card-bg: rgba(30, 41, 59, 0.5); /* Semi-transparent slate for glassmorphism */
+    --card-border: rgba(255, 255, 255, 0.08);
+    
+    /* Text colors with varying visual hierarchies */
+    --text-primary: hsl(210, 40%, 98%);
+    --text-secondary: hsl(215, 20%, 65%);
+    --text-muted: hsl(215, 15%, 45%);
+    
+    /* Button thematic colors */
+    --color-digit: hsl(217, 19%, 22%);
+    --color-digit-hover: hsl(217, 19%, 28%);
+    --color-digit-text: hsl(210, 40%, 95%);
+    
+    --color-operator: hsl(258, 65%, 40%);
+    --color-operator-hover: hsl(258, 70%, 48%);
+    --color-operator-text: hsl(210, 40%, 98%);
+    
+    --color-util: hsl(219, 15%, 15%);
+    --color-util-hover: hsl(219, 15%, 22%);
+    --color-util-text: hsl(24, 90%, 65%); /* Soft warning orange color */
+    
+    /* Primary Action Button (Equals) */
+    --color-equals-gradient-1: hsl(172, 80%, 45%);
+    --color-equals-gradient-2: hsl(190, 90%, 50%);
+    --color-equals-hover: hsl(172, 85%, 55%);
+    --color-equals-text: hsl(222, 25%, 8%);
+    
+    /* Decorative Background Blob Colors */
+    --blob-pink: rgba(236, 72, 153, 0.15);
+    --blob-violet: rgba(139, 92, 246, 0.18);
+    
+    /* Shadow and layout scales */
+    --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.25);
+    --shadow-glow-cyan: 0 0 25px rgba(6, 182, 212, 0.4);
+    
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 12px;
+    
+    --font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Reset and general styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   VISUAL AMBIANCE (GLOWING BLOBS)
+   These provide depth and professional design texture to the web page.
+   ========================================================================== */
+.glow-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.blob-1 {
+    top: 15%;
+    left: 10%;
+    width: 350px;
+    height: 350px;
+    background: var(--blob-pink);
+    animation: float-slow 15s infinite alternate ease-in-out;
+}
+
+.blob-2 {
+    bottom: 15%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: var(--blob-violet);
+    animation: float-slow 20s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes float-slow {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-40px) scale(1.15); }
+}
+
+/* ==========================================================================
+   APP HEADER
+   ========================================================================== */
+.app-header {
+    text-align: center;
+    margin-bottom: 28px;
+    z-index: 10;
+}
+
+.logo-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.accent-text {
+    background: linear-gradient(135deg, hsl(260, 95%, 70%), hsl(190, 90%, 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   CALCULATOR CONTAINER & CARD
+   ========================================================================== */
+.calculator-container {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.calculator-card {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-premium);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calculator-card:hover {
+    box-shadow: var(--shadow-premium), var(--shadow-glow);
+}
+
+/* ==========================================================================
+   CALCULATOR SCREEN (DISPLAY)
+   ========================================================================== */
+.calc-screen {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-height: 120px;
+    overflow: hidden;
+    word-break: break-all;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Smaller top indicator for history / formula expression */
+.expression-viewer {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    min-height: 20px;
+    margin-bottom: 6px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s ease;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* Custom scrollbar for horizontal overflow in expression viewer */
+.expression-viewer::-webkit-scrollbar {
+    height: 2px;
+}
+.expression-viewer::-webkit-scrollbar-thumb {
+    background-color: var(--text-muted);
+    border-radius: 1px;
+}
+
+/* Main bold viewer for current inputs & outcome results */
+.result-viewer {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align: right;
+    letter-spacing: -0.5px;
+}
+
+.result-viewer::-webkit-scrollbar {
+    height: 3px;
+}
+.result-viewer::-webkit-scrollbar-thumb {
+    background-color: var(--card-border);
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   KEYPAD GRID
+   ========================================================================== */
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* ==========================================================================
+   BUTTONS (DIGITS, UTILITIES, OPERATORS)
+   ========================================================================== */
+.btn {
+    border: none;
+    outline: none;
+    height: 60px;
+    border-radius: var(--radius-sm);
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button interactive states (press & scale animations) */
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+.btn:active {
+    transform: translateY(1px) scale(0.96);
+    filter: brightness(0.9);
+}
+
+/* Class-specific button themes */
+
+/* Number keys theme */
+.btn-digit {
+    background-color: var(--color-digit);
+    color: var(--color-digit-text);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+.btn-digit:hover {
+    background-color: var(--color-digit-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Operations keys theme (+, -, *, /) */
+.btn-operator {
+    background-color: var(--color-operator);
+    color: var(--color-operator-text);
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+.btn-operator:hover {
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+/* Helper keys theme (C, Paren, Backspace) */
+.btn-util {
+    background-color: var(--color-util);
+    color: var(--color-util-text);
+    font-weight: 600;
+}
+.btn-util:hover {
+    background-color: var(--color-util-hover);
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.1);
+}
+
+/* Backspace SVG alignment */
+.btn-backspace svg {
+    display: block;
+    pointer-events: none;
+}
+
+/* Primary calculate button (=) */
+.btn-equals {
+    grid-column: span 1; /* Normal button size, fits grid beautifully */
+    background: linear-gradient(135deg, var(--color-equals-gradient-1), var(--color-equals-gradient-2));
+    color: var(--color-equals-text);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.btn-equals:hover {
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3), var(--shadow-glow-cyan);
+}
+
+/* ==========================================================================
+   TIPS SECTION
+   ========================================================================== */
+.user-tips {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    background: rgba(30, 41, 59, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    width: 100%;
+}
+
+.tip-badge {
+    background: linear-gradient(135deg, hsl(260, 95%, 70%), hsl(190, 90%, 55%));
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--bg-dark);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.tip-text {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.35;
+}
+
+/* ==========================================================================
+   APP FOOTER
+   ========================================================================== */
+.app-footer {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    z-index: 10;
+}
+
+.footer-credit {
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: hsl(142, 70%, 45%);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px hsl(142, 70%, 45%);
+    animation: heartbeat 2s infinite alternate;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px hsl(142, 72%, 50%); }
+}
+
+/* ==========================================================================
+   MOBILE & VIEWPORT RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 400px) {
+    body {
+        padding: 12px;
+    }
+    
+    .app-header {
+        margin-bottom: 16px;
+    }
+    
+    .logo-text {
+        font-size: 1.8rem;
+    }
+
+    .calculator-card {
+        padding: 16px;
+        border-radius: var(--radius-md);
+    }
+    
+    .calc-screen {
+        padding: 16px;
+        min-height: 100px;
+        margin-bottom: 16px;
+    }
+    
+    .result-viewer {
+        font-size: 1.8rem;
+    }
+    
+    .keypad-grid {
+        gap: 8px;
+    }
+    
+    .btn {
+        height: 52px;
+        font-size: 1.15rem;
+        border-radius: 8px;
+    }
+    
+    .btn-equals {
+        font-size: 1.3rem;
+    }
+    
+    .app-footer {
+        margin-top: 20px;
+    }
+}
